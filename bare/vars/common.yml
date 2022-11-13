@@ -1,10 +1,10 @@
-run_preflight_checks: "true"
+run_preflight_checks: "false"
 node_major_version: "16"
 os_family: "{{ ansible_os_family|lower }}"
 #Please list a valid name of the tag from Mastodon's Github.
 #Accepted format is "vX.X.XrcX"
-mastodon_version: "latest" 
-mastodon_allow_prerelease: "false"
+mastodon_version: "latest"
+mastodon_allow_prerelease: "true"
 mastodon_user: "mastodon"
 mastodon_home: "/home/{{ mastodon_user }}"
 mastodon_db_user: "{{ mastodon_user }}"
@@ -23,3 +23,8 @@ redis_port: 6379
 db_host: /var/run/postgresql
 self_signed_cert_location: /etc/ssl/certs
 self_signed_key_location: /etc/ssl/private
+
+mastodon_host: mastodon.roe.dev
+local_domain: roe.dev
+web_domain: mastodon.roe.dev
+single_user_mode: true

@@ -9,6 +9,7 @@ packages:
     - "g++"
     - "gcc"
     - "git"
+    - "certbot"
     - "imagemagick"
     - "libffi-dev"
     - "libgdbm-dev"
