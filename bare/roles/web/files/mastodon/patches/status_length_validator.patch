@@ -1,0 +1,10 @@
+--- status_length_validator.rb  2022-11-13 11:15:05.406247668 +0000
++++ s   2022-11-22 23:07:26.218715436 +0000
+@@ -1,7 +1,7 @@
+ # frozen_string_literal: true
+
+ class StatusLengthValidator < ActiveModel::Validator
+-  MAX_CHARS = 500
++  MAX_CHARS = 2500
+   URL_PLACEHOLDER_CHARS = 23
+   URL_PLACEHOLDER = 'x' * 23

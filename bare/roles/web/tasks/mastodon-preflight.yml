@@ -3,14 +3,14 @@
 
 - name: Fetch latest stable Mastodon version number
   shell: "git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' https://github.com/mastodon/mastodon.git | grep -v 'rc' | tail --lines=1 | cut -d '/' -f 3"
-  when: 
+  when:
     - mastodon_version == "latest"
     - mastodon_allow_prerelease | bool == false
   register: latest_mastodon_tag
 
-- name: Fetch latest stable Mastodon version number allowing release candidates 
+- name: Fetch latest stable Mastodon version number allowing release candidates
   shell: "git -c 'versionsort.suffix=-' ls-remote --tags --sort='v:refname' https://github.com/mastodon/mastodon.git | tail --lines=1 | cut -d '/' -f 3"
-  when: 
+  when:
     - mastodon_version == "latest"
     - mastodon_allow_prerelease | bool
   register: latest_mastodon_tag_rc
@@ -29,7 +29,7 @@
     dest: "{{ mastodon_home }}/{{mastodon_path}}"
     clone: true
     version: "{{ latest_mastodon_tag_rc.stdout }}"
-  when: 
+  when:
     - mastodon_version == "latest"
     - mastodon_allow_prerelease | bool
 
@@ -39,7 +39,21 @@
     dest: "{{ mastodon_home }}/{{mastodon_path}}"
     clone: true
     version: "{{ latest_mastodon_tag.stdout }}"
-  when: 
+  when:
     - mastodon_version == "latest"
     - mastodon_allow_prerelease | bool == false
 
+- name: Patch Mastodon
+  ansible.posix.patch:
+    src: files/mastodon/patches/compose_form.patch
+    dest: "{{ mastodon_home }}/{{mastodon_path}}/app/javascript/mastodon/features/compose/components/compose_form.js"
+
+- name: Patch Mastodon
+  ansible.posix.patch:
+    src: files/mastodon/patches/status_length_validator.patch
+    dest: "{{ mastodon_home }}/{{mastodon_path}}/app/validators/status_length_validator.rb"
+
+- name: Patch Mastodon
+  ansible.posix.patch:
+    src: files/mastodon/patches/instance_serializer.patch
+    dest: "{{ mastodon_home }}/{{mastodon_path}}/app/serializers/rest/instance_serializer.rb"

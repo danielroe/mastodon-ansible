@@ -1,0 +1,22 @@
+--- instance_serializer.rb      2022-11-13 15:01:36.698008362 +0000
++++ i   2022-11-22 23:09:28.585958355 +0000
+@@ -11,7 +11,7 @@
+
+   attributes :domain, :title, :version, :source_url, :description,
+              :usage, :thumbnail, :languages, :configuration,
+-             :registrations
++             :registrations, :max_toot_chars
+
+   has_one :contact, serializer: ContactSerializer
+   has_many :rules, serializer: REST::RuleSerializer
+@@ -87,6 +87,10 @@
+     }
+   end
+
++  def max_toot_chars
++    2500
++  end
++
+   private
+
+   def registrations_enabled?
