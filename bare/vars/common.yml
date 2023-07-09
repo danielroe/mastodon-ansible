@@ -1,9 +1,9 @@
-run_preflight_checks: "false"
+run_preflight_checks: "true"
 node_major_version: "16"
 os_family: "{{ ansible_os_family|lower }}"
 #Please list a valid name of the tag from Mastodon's Github.
 #Accepted format is "vX.X.XrcX"
-mastodon_version: "v4.0.2"
+mastodon_version: "v4.0.6"
 mastodon_allow_prerelease: "false"
 mastodon_user: "mastodon"
 mastodon_home: "/home/{{ mastodon_user }}"

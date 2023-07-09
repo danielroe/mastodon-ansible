@@ -1,9 +1,9 @@
 # Mastodon setup
-local_domain: roe.dev
+local_domain: mastodon.local
 local_https: false
-web_domain: mastodon.roe.dev
+# web_domain: mastodon.example.com
 # alternate_domains: example1.com,example2.com
-single_user_mode: true
+# single_user_mode: true
 default_locale: en
 # paperclip_root_path: /var/lib/mastodon/public-system
 # paperclip_root_url: /system
@@ -12,21 +12,21 @@ default_locale: en
 # Redis
 redis_host: localhost
 redis_port: 6379
-# redis_pass: CHANGEME
+redis_pass: CHANGEME
 
 # Postgres
 db_host: /var/run/postgresql
 db_user: mastodon
 db_name: mastodon
-# db_pass: CHANGEME
+db_pass: CHANGEME
 db_port: 5432
 
 # Secrets
-# paperclip_secret: CHANGEME
-# secret_key_base: CHANGEME
-# otp_secret: CHANGEME
-# vapid_private_key: CHANGEME
-# vapid_public_key: CHANGEME
+paperclip_secret: CHANGEME
+secret_key_base: CHANGEME
+otp_secret: CHANGEME
+vapid_private_key: CHANGEME
+vapid_public_key: CHANGEME
 
 # Email
 # email_domain_blacklist: example1.com|example2.de|etc

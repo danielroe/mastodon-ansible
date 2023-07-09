@@ -20,6 +20,8 @@
     repo: "https://github.com/mastodon/mastodon.git"
     dest: "{{ mastodon_home }}/{{mastodon_path}}"
     clone: true
+    # required as we patch the files
+    force: true
     version: "{{ mastodon_version }}"
   when: mastodon_version != "latest"
 

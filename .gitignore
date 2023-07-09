@@ -7,3 +7,4 @@
 /vendor
 host
 .DS_Store
+.vault_pass
